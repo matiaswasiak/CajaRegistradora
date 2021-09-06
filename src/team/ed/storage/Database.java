@@ -5,8 +5,13 @@ import team.ed.objects.Potato;
 import team.ed.objects.Product;
 import team.ed.objects.Rice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Database {
     private Product[] products;
+    private List<Product> purchases;
+    private List<Product> sales;
 
     public Database() {
         products = new Product[3];
@@ -17,6 +22,9 @@ public class Database {
         products[0] = potato;
         products[1] = rice;
         products[2] = meat;
+
+        purchases = new ArrayList<>();
+        sales = new ArrayList<>();
     }
 
     public Product getByIndex(int i) {
@@ -44,5 +52,27 @@ public class Database {
             System.out.println(cnse);
         }
         return products;
+    }
+
+    public void buy(Product product) {
+        Product temp;
+        switch (product.getClass().getSimpleName()) {
+            case "Potato":
+                temp = products[0];
+                break;
+            case "Rice":
+                temp = products[1];
+                break;
+            case "Meat":
+                temp = products[2];
+                break;
+            default:
+                System.out.println("No válido");
+                return;
+        }
+
+        temp.setAmount(temp.getAmount() + product.getAmount());
+        temp.setPrice(product.getPrice());
+        purchases.add(product);
     }
 }
