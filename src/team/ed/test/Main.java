@@ -8,5 +8,14 @@ public class Main {
         Database database = new Database();
         Product product = database.getByIndex(0);
         System.out.println(product);
+
+        product.setName("Pastusa");
+        product.setAmount(10);
+        product.setPrice(1000);
+
+        Product[] products = database.getAll();
+        for (Product v : products) {
+            System.out.println(v);
+        }
     }
 }
