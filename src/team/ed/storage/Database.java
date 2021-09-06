@@ -35,6 +35,14 @@ public class Database {
     }
 
     public Product[] getAll() {
+        Product[] result = new Product[3];
+        try {
+            result[0] = products[0].clone();
+            result[1] = products[0].clone();
+            result[2] = products[0].clone();
+        } catch (CloneNotSupportedException cnse) {
+            System.out.println(cnse);
+        }
         return products;
     }
 }
