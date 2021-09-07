@@ -94,4 +94,12 @@ public class View {
         System.out.println("\t\t\t3. Carne");
         System.out.println("\t\t\t4. Volver");
     }
+
+    public static void showThanks() {
+        System.out.println("Gracias por utilizar nuestra primer APP!");
+    }
+
+    public static void showInvalidOption() {
+        System.out.println("Opción no válida!");
+    }
 }

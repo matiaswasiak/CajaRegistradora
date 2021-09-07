@@ -18,6 +18,29 @@ public class Register {
         do {
             View.showGetOption();
             option = View.getOption();
+            switch (option) {
+                case 1:
+                    View.showBuyHeader();
+                    break;
+                case 2:
+                    View.showSaleHeader();
+                    break;
+                case 3:
+                    View.showStockHeader();
+                    break;
+                case 4:
+                    View.showBuyListHeader();
+                    break;
+                case 5:
+                    View.showSaleListHeader();
+                    break;
+                case 6:
+                    View.showThanks();
+                    // TODO agregar la salida del sistema
+                    break;
+                default:
+                    View.showInvalidOption();
+            }
         } while (option < 1 || option > 6);
     }
 }
