@@ -1,7 +1,5 @@
 package team.ed.test;
 
-import team.ed.objects.Product;
-import team.ed.storage.Database;
 import team.ed.views.View;
 
 public class Main {
@@ -19,5 +17,9 @@ public class Main {
 //            System.out.println(v);
 //        }
         View.showHeaderPrincipal();
+        View.showMenuPrincipal();
+        View.showGetOption();
+        int option = View.getOption();
+        System.out.println("La opción digitada fue: " + option);
     }
 }
