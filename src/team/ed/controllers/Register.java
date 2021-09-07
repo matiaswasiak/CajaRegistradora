@@ -1,5 +1,9 @@
 package team.ed.controllers;
 
+import team.ed.objects.Meat;
+import team.ed.objects.Potato;
+import team.ed.objects.Product;
+import team.ed.objects.Rice;
 import team.ed.storage.Database;
 import team.ed.views.View;
 
@@ -20,7 +24,7 @@ public class Register {
             option = View.getOption();
             switch (option) {
                 case 1:
-                    View.showBuyHeader();
+                    buy();
                     break;
                 case 2:
                     View.showSaleHeader();
@@ -42,5 +46,55 @@ public class Register {
                     View.showInvalidOption();
             }
         } while (option < 1 || option > 6);
+    }
+
+    // buy se encargará de mostrar el menú de compras y obtener la opción deseada por el usuario.
+    private void buy() {
+        View.showBuyHeader();
+        int option;
+        do {
+            View.showGetOption();
+            option = View.getOption();
+            switch (option) {
+                case 1:
+
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    // TODO sair del menú de compras
+                    break;
+                default:
+                    View.showInvalidOption();
+            }
+        } while (option < 1 || option > 4);
+    }
+
+    // buyProduct registra en la base de datos el producto comprado.
+    public void buyProduct(int option) {
+        Product product = null;
+        switch (option) {
+            case 1:
+                product = new Potato("Sabanera");
+                break;
+            case 2:
+                product = new Rice("Una marca");
+                break;
+            case 3:
+                product = new Meat("Lomo fino");
+                break;
+            default:
+                View.showInvalidOption();
+        }
+        View.showGetAmount();
+        int amount = View.getAmount();
+        View.showGetPrice();
+        double price = View.getPrice();
+
+        product.setAmount(amount);
+        product.setPrice(price);
+        database.buy(product);
     }
 }
