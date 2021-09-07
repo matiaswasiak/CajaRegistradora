@@ -5,6 +5,7 @@ import team.ed.objects.Potato;
 import team.ed.objects.Product;
 import team.ed.objects.Rice;
 
+import javax.sound.sampled.Port;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,5 +75,35 @@ public class Database {
         temp.setAmount(temp.getAmount() + product.getAmount());
         temp.setPrice(product.getPrice());
         purchases.add(product);
+    }
+
+    public void sale(Product product) {
+        Product temp;
+        switch (product.getClass().getSimpleName()) {
+            case "Potato":
+                temp = products[0];
+                break;
+            case "Rice":
+                temp = products[1];
+                break;
+            case "Meat":
+                temp = products[2];
+                break;
+            default:
+                System.out.println("No válido");
+                return;
+        }
+
+        temp.setAmount(temp.getAmount() - product.getAmount());
+        product.setPrice(temp.getPrice() * 1.25);
+        sales.add(product);
+    }
+
+    public List<Product> getPurchases() {
+        return purchases;
+    }
+
+    public List<Product> getSales() {
+        return sales;
     }
 }
