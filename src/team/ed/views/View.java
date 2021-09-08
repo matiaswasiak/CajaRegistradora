@@ -102,4 +102,8 @@ public class View {
     public static void showInvalidOption() {
         System.out.println("Opción no válida!");
     }
+
+    public static void showGetBack(String name) {
+        System.out.println("\t\t\tSaliendo del módulo " + name);
+    }
 }

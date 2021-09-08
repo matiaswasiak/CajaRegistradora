@@ -55,19 +55,13 @@ public class Register {
         do {
             View.showGetOption();
             option = View.getOption();
-            switch (option) {
-                case 1:
-
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    // TODO sair del menú de compras
-                    break;
-                default:
-                    View.showInvalidOption();
+            if (option >= 1 && option <=3) {
+                buyProduct(option);
+            } else if (option == 4) {
+                View.showGetBack("Compras");
+                return;
+            } else {
+                View.showInvalidOption();
             }
         } while (option < 1 || option > 4);
     }
