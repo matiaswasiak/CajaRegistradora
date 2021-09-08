@@ -16,10 +16,10 @@ public class Register {
 
     // register inicia el proceso de la registradora
     public void register() {
-        View.showHeaderPrincipal();
-        View.showMenuPrincipal();
         int option;
         do {
+            View.showHeaderPrincipal();
+            View.showMenuPrincipal();
             View.showGetOption();
             option = View.getOption();
             switch (option) {
@@ -45,7 +45,7 @@ public class Register {
                 default:
                     View.showInvalidOption();
             }
-        } while (option < 1 || option > 6);
+        } while (option >= 1 && option <= 6);
     }
 
     // buy se encargará de mostrar el menú de compras y obtener la opción deseada por el usuario.
