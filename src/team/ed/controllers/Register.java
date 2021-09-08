@@ -40,7 +40,7 @@ public class Register {
                     break;
                 case 6:
                     View.showThanks();
-                    // TODO agregar la salida del sistema
+                    System.exit(0);
                     break;
                 default:
                     View.showInvalidOption();
