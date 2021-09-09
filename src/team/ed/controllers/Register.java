@@ -27,7 +27,7 @@ public class Register {
                     buy();
                     break;
                 case 2:
-                    View.showSaleHeader();
+                    sale();
                     break;
                 case 3:
                     showStock();
@@ -97,6 +97,44 @@ public class Register {
         View.showItemsStock(database.getAll());
         View.showAnyKey();
         View.getOption();
+    }
+
+    // sale se encargará de mostrar el menú de ventas y obtener la opción deseada por el usuario.
+    private void sale() {
+        View.showSaleHeader();
+        int option;
+        do {
+            View.showGetOption();
+            option = View.getOption();
+            if (option >= 1 && option <= 3) {
+                saleProduct(option);
+            } else if (option == 4) {
+                View.showGetBack("Ventas");
+                return;
+            } else {
+                View.showInvalidOption();
+            }
+        } while (option < 1 || option > 4);
+    }
+
+    // saleProduct registra en la base de datos el producto comprado.
+    private void saleProduct(int option) {
+        Product product = null;
+        if (option < 1 || option > 3) {
+            View.showInvalidOption();
+            return;
+        }
+
+        product = database.getByIndex(option - 1);
+        View.showGetAmount();
+        int amount = View.getAmount();
+        if (product.getAmount() < amount) {
+            View.showInvalidAmount();
+            return;
+        }
+
+        product.setAmount(amount);
+        database.sale(product);
     }
 
 }

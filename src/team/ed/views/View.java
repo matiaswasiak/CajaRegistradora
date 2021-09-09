@@ -118,4 +118,8 @@ public class View {
                     v.getPrice() + "\t\t\t| " + v.getAmount() * v.getPrice() + "\t\t*");
         }
     }
+
+    public static void showInvalidAmount() {
+        System.out.println("La cantidad no es válida");
+    }
 }
