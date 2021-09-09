@@ -30,7 +30,7 @@ public class Register {
                     View.showSaleHeader();
                     break;
                 case 3:
-                    View.showStockHeader();
+                    showStock();
                     break;
                 case 4:
                     View.showBuyListHeader();
@@ -55,7 +55,7 @@ public class Register {
         do {
             View.showGetOption();
             option = View.getOption();
-            if (option >= 1 && option <=3) {
+            if (option >= 1 && option <= 3) {
                 buyProduct(option);
             } else if (option == 4) {
                 View.showGetBack("Compras");
@@ -67,7 +67,7 @@ public class Register {
     }
 
     // buyProduct registra en la base de datos el producto comprado.
-    public void buyProduct(int option) {
+    private void buyProduct(int option) {
         Product product = null;
         switch (option) {
             case 1:
@@ -91,4 +91,12 @@ public class Register {
         product.setPrice(price);
         database.buy(product);
     }
+
+    private void showStock() {
+        View.showStockHeader();
+        View.showItemsStock(database.getAll());
+        View.showAnyKey();
+        View.getOption();
+    }
+
 }
